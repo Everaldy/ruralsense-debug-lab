@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RuralSense Debug Lab | Semana 9</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <nav class="topbar" aria-label="Navegación principal">
+        <div class="brand">
+          <span class="brand__icon" aria-hidden="true">RS</span>
+          <div>
+            <strong>RuralSense Debug Lab</strong>
+            <small>Pruebas, consola, inspector y depurador</small>
+          </div>
+        </div>
+        <div class="topbar__actions">
+          <button class="btn btn--ghost" id="btnTheme" type="button">Cambiar tema</button>
+          <a class="btn btn--primary" href="#registro">Iniciar pruebas</a>
+        </div>
+      </nav>
+
+      <section class="hero__content">
+        <div>
+          <p class="eyebrow">Semana 9 · Taller práctico</p>
+          <h1>Explora, prueba y depura una aplicación web realista</h1>
+          <p>
+            Este proyecto simula una plataforma comunitaria para registrar talleres rurales,
+            revisar inscritos y observar resultados. Está diseñado para practicar con las
+            herramientas del navegador sin instalar frameworks.
+          </p>
+          <div class="hero__stats" aria-label="Indicadores del laboratorio">
+            <article>
+              <strong id="totalInscritos">0</strong>
+              <span>inscritos</span>
+            </article>
+            <article>
+              <strong id="promedioEdad">0</strong>
+              <span>edad promedio</span>
+            </article>
+            <article>
+              <strong id="totalErrores">0</strong>
+              <span>validaciones</span>
+            </article>
+          </div>
+        </div>
+        <aside class="debug-card">
+          <h2>Panel del tester</h2>
+          <p>Usa estas acciones para generar eventos y observarlos en consola.</p>
+          <button class="btn btn--secondary" id="btnSeed" type="button">Cargar datos de ejemplo</button>
+          <button class="btn btn--secondary" id="btnClear" type="button">Limpiar registros</button>
+          <button class="btn btn--danger" id="btnControlledError" type="button">Generar error controlado</button>
+          <p class="hint">Abre la consola antes de presionar los botones: <kbd>F12</kbd> → Console.</p>
+        </aside>
+      </section>
+    </header>
+
+    <main class="layout">
+      <section class="card" id="registro">
+        <div class="section-heading">
+          <p class="eyebrow">Formulario</p>
+          <h2>Registro a taller comunitario</h2>
+          <p>Valida entradas, corrige errores y observa cómo cambia el estado de la aplicación.</p>
+        </div>
+
+        <form id="registrationForm" novalidate>
+          <div class="form-grid">
+            <label>
+              Nombre completo
+              <input id="fullName" name="fullName" type="text" placeholder="Ej: Ana Pérez" autocomplete="name" />
+              <small class="error" data-error="fullName"></small>
+            </label>
+
+            <label>
+              Edad
+              <input id="age" name="age" type="number" min="12" max="90" placeholder="Ej: 16" />
+              <small class="error" data-error="age"></small>
+            </label>
+
+            <label>
+              Celular
+              <input id="phone" name="phone" type="tel" placeholder="10 dígitos" inputmode="numeric" />
+              <small class="error" data-error="phone"></small>
+            </label>
+
+            <label>
+              Taller
+              <select id="workshop" name="workshop">
+                <option value="">Selecciona una opción</option>
+                <option value="Agricultura sostenible">Agricultura sostenible</option>
+                <option value="Tecnología para la finca">Tecnología para la finca</option>
+                <option value="Emprendimiento rural">Emprendimiento rural</option>
+                <option value="Programación web básica">Programación web básica</option>
+              </select>
+              <small class="error" data-error="workshop"></small>
+            </label>
+          </div>
+
+          <label class="textarea-label">
+            Observación o necesidad de aprendizaje
+            <textarea id="notes" name="notes" rows="4" placeholder="Escribe una necesidad real de tu comunidad..."></textarea>
+          </label>
+
+          <div class="form-actions">
+            <button class="btn btn--primary" type="submit">Registrar participante</button>
+            <button class="btn btn--ghost" type="reset">Restablecer formulario</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="card">
+        <div class="section-heading section-heading--row">
+          <div>
+            <p class="eyebrow">Resultados</p>
+            <h2>Participantes registrados</h2>
+          </div>
+          <label class="search-box">
+            Buscar
+            <input id="searchInput" type="search" placeholder="Nombre o taller" />
+          </label>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Nombre</th>
+                <th>Edad</th>
+                <th>Celular</th>
+                <th>Taller</th>
+                <th>Estado</th>
+              </tr>
+            </thead>
+            <tbody id="participantsTable"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="card analytics-card">
+        <div>
+          <p class="eyebrow">Análisis visual</p>
+          <h2>Distribución por taller</h2>
+          <p>El gráfico se dibuja con JavaScript puro sobre un elemento <code>canvas</code>.</p>
+        </div>
+        <canvas id="workshopChart" width="760" height="300" aria-label="Gráfico de participantes por taller"></canvas>
+      </section>
+
+      <section class="card checklist-card">
+        <p class="eyebrow">Checklist de pruebas</p>
+        <h2>Lo que debes verificar</h2>
+        <ul class="checklist">
+          <li><input type="checkbox" /> El formulario rechaza campos vacíos.</li>
+          <li><input type="checkbox" /> El celular solo acepta 10 dígitos.</li>
+          <li><input type="checkbox" /> La tabla se actualiza después de registrar.</li>
+          <li><input type="checkbox" /> La búsqueda filtra por nombre o taller.</li>
+          <li><input type="checkbox" /> El gráfico cambia cuando hay nuevos datos.</li>
+          <li><input type="checkbox" /> La consola muestra mensajes útiles para depurar.</li>
+        </ul>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>Proyecto educativo para practicar pruebas y depuración web en VS Code.</p>
+    </footer>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="js/app.js"></script>
+  </body>
+</html>
