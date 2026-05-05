@@ -96,6 +96,10 @@ code, kbd { background: var(--secondary); border: 1px solid var(--border); borde
   border-radius: 999px;
   min-height: 42px;
   padding: 0.7rem 1rem;
+  padding: 12px 20px;
+  border: 2px solid #333;
+  border-radius: 8px;
+  margin: 5px;
   cursor: pointer;
   text-decoration: none;
   font-weight: 700;

@@ -1,0 +1,34 @@
+- ¿Qué datos llegaron a la función validateForm?
+  Llegaron los datos del formulario en un objeto data, con campos como nombre, correo, teléfono, etc. Algunos estaban llenos y otros vacíos.
+
+- ¿Qué campo generó error?
+  El campo que generó error fue el correo porque estaba vacío.
+
+- ¿Qué condición del código detectó el error?
+ Una condición if que valida si el correo está vacío (data.correo === "") fue la que detectó el error.
+
+- ¿Qué pasó cuando corregiste los datos?
+  Cuando completé correctamente el campo, el error desapareció y el formulario se procesó normalmente.
+
+
+
+preguntas de cierre.
+
+1. ¿Para qué sirve la consola del navegador?
+  Sirve para ver mensajes, errores y resultados del código mientras se ejecuta la aplicación.
+
+2. ¿Qué diferencia hay entre inspeccionar un elemento y modificar el archivo CSS?
+  Inspeccionar permite ver y probar cambios temporales, mientras que modificar el CSS cambia el diseño de forma permanente.
+
+3. ¿Qué es un breakpoint?
+  Es un punto donde el código se detiene para analizar paso a paso su ejecución y ver los valores de las variables.
+
+4. ¿Qué error controlado encontraste en el proyecto?
+   Encontré que el sistema mostraba un error cuando un campo estaba vacío o cuando la edad no cumplía con la validación.
+
+5. ¿Qué prueba te ayudó más a entender la depuración?
+   La prueba con breakpoints fue la que más me ayudó porque pude ver cómo se ejecutaba el código paso a paso.
+
+6. ¿Qué mejorarías de esta aplicación?
+   Mejoraría el diseño y agregaría más validaciones para evitar errores en los datos ingresados.
+

@@ -101,8 +101,8 @@ function validateForm(data) {
     errors.fullName = "Escribe un nombre de al menos 4 caracteres.";
   }
 
-  if (!Number.isInteger(data.age) || data.age < 12 || data.age > 90) {
-    errors.age = "La edad debe estar entre 12 y 90 años.";
+  if (!Number.isInteger(data.age) || data.age < 14 || data.age > 90) {
+    errors.age = "La edad debe estar entre 12 y 14 años.";
   }
 
   if (!/^\d{10}$/.test(data.phone)) {
@@ -141,6 +141,7 @@ function clearAllErrors() {
 
 function addParticipant(participant) {
   state.participants.unshift(participant);
+  console.log("Nuevo participante agregado:", participant.fullName);
   saveParticipants();
   render();
 }
